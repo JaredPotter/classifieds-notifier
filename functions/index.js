@@ -23,13 +23,22 @@ const kslUrl = `https://classifieds.ksl.com/search/?keyword=${query}&zip=84093&m
 const craigslistUrl = `https://saltlakecity.craigslist.org/search/sss?sort=date&postal=84093&query=${query}&search_distance=60`;
 const facebookMarketplaceUrl = `https://www.facebook.com/marketplace/105496622817769/search/?query=${query}&latitude=40.5724&longitude=-111.86&radiusKM=97&vertical=C2C&sort=CREATION_TIME_DESCEND`
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-exports.classifiedsNotifier = functions.https.onRequest(async () => {
+// Firebase Function settings.
+const runtimeOpts = {
+    timeoutSeconds: 300,
+    memory: '2GB'
+};
+
+// Cron Job Schedule - How Often to trigger the function.
+const schedule = '*/15 * * * *'; // Everyday 15 minutes
+
+exports.classifiedsNotifier = functions.runWith(runtimeOpts).pubsub.schedule(schedule).onRun(async () => {
+// exports.classifiedsNotifier = functions.https.onRequest(async () => {
+    console.log('FUNCTION START!');
+
     // Launch new Chromium instance.
     const browser = await puppeteer.launch({
-        headless: false // Puppeteer is 'headless' by default.
+        headless: true // Puppeteer is 'headless' by default.
     });
 
     const page = (await browser.pages())[0];
@@ -98,6 +107,8 @@ exports.classifiedsNotifier = functions.https.onRequest(async () => {
 
         console.log('Finished Sending SMS.');
     }
+
+    console.log('FUNCTION END!');
 
     return;
 });
@@ -256,4 +267,4 @@ function appendPostingsToMessage(postings, message) {
 
 // FOR LOCAL DEV ONLY.
 // REMOVE FOR DEPLOYMENT
-exports.classifiedsNotifier();
+// exports.classifiedsNotifier();

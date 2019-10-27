@@ -27,5 +27,8 @@
     "firebase-functions": "^3.3.0",
     "puppeteer": "^2.0.0",
     "twilio": "^3.36.0"
-  }
+  },
+  "engines": {
+    "node": "8"
+  }  
 }
