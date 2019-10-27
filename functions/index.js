@@ -38,7 +38,8 @@ exports.classifiedsNotifier = functions.runWith(runtimeOpts).pubsub.schedule(sch
 
     // Launch new Chromium instance.
     const browser = await puppeteer.launch({
-        headless: true // Puppeteer is 'headless' by default.
+        headless: true, // Puppeteer is 'headless' by default.
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 
     const page = (await browser.pages())[0];
