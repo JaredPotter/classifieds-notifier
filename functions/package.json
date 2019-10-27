@@ -1,0 +1,31 @@
+{
+  "name": "classifieds-notifier",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js",
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaredPotter/classifieds-notifier.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JaredPotter/classifieds-notifier/issues"
+  },
+  "homepage": "https://github.com/JaredPotter/classifieds-notifier#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "firebase-admin": "^8.6.1",
+    "firebase-functions": "^3.3.0",
+    "puppeteer": "^2.0.0",
+    "twilio": "^3.36.0"
+  }
+}
