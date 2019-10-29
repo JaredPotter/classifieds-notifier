@@ -1,6 +1,6 @@
 {
     "searchKsl": true,
-    "searchFacebookMarketplace": true,
+    "searchFacebookMarketplace": false,
     "searchCraigslist": true,
     "location": "Salt Lake City"
 }

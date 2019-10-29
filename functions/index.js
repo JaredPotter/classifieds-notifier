@@ -31,7 +31,6 @@ const runtimeOpts = {
 const schedule = '*/15 * * * *'; // Everyday 15 minutes
     
 const classifiedsNotifier = async () => {
-// exports.classifiedsNotifier = functions.https.onRequest(async () => {
     console.log('FUNCTION START!');
 
     // Launch new Chromium instance.
@@ -73,7 +72,6 @@ const classifiedsNotifier = async () => {
     browser.close();
 
     sendMessageToTwilio(message);
-    
 
     console.log('FUNCTION END!');
 
